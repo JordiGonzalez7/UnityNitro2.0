@@ -46,12 +46,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraScript.cs" />
-     <Compile Include="Assets\Scripts\Controller.cs" />
-     <Compile Include="Assets\Scripts\LandBehaviour.cs" />
-     <Compile Include="Assets\Scripts\StarP.cs" />
-     <Compile Include="Assets\Scripts\jumpBehaviour.cs" />
-     <Compile Include="Assets\Scripts\oraBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Enemy\DonPatchArmy.cs" />
+     <Compile Include="Assets\Scripts\Enemy\PatchScript.cs" />
+     <Compile Include="Assets\Scripts\Enemy\States\IdleState.cs" />
+     <Compile Include="Assets\Scripts\Enemy\States\MeleeState.cs" />
+     <Compile Include="Assets\Scripts\Enemy\States\PatrolState.cs" />
+     <Compile Include="Assets\Scripts\Enemy\States\RangedState.cs" />
+     <Compile Include="Assets\Scripts\Enemy\States\iEnemyState.cs" />
+     <Compile Include="Assets\Scripts\Enemy\ignoreCollision.cs" />
+     <Compile Include="Assets\Scripts\Escenario\CameraScript.cs" />
+     <Compile Include="Assets\Scripts\Escenario\DIOWALL.cs" />
+     <Compile Include="Assets\Scripts\Jotaro\Character.cs" />
+     <Compile Include="Assets\Scripts\Jotaro\Controller.cs" />
+     <Compile Include="Assets\Scripts\Jotaro\LandBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Jotaro\StarP.cs" />
+     <Compile Include="Assets\Scripts\Jotaro\jumpBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Jotaro\oraBehaviour.cs" />
+     <Compile Include="Assets\SineBehaviour.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
