@@ -1,11 +1,12 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LandBehaviour.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Jotaro\Character.cs">
     <Files>
-      <File FileName="Assets\Scripts\Controller.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\StarP.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LandBehaviour.cs" Line="18" Column="4" />
+      <File FileName="Assets\Scripts\Enemy\PatchScript.cs" Line="49" Column="1" />
+      <File FileName="Assets\Scripts\Jotaro\Character.cs" Line="10" Column="25" />
+      <File FileName="Assets\Scripts\Enemy\ignoreCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Jotaro\Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\States\PatrolState.cs" Line="8" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
