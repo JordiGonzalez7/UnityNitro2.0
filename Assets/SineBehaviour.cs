@@ -19,11 +19,11 @@ public class SineBehaviour : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		if (animator.GetBool("muerto") == true) {
 
-			Destroy (animator.gameObject);
+			Destroy (animator.GetComponent<PatchSight> ().gameObject);
 		}
 
 		//animator.ResetTrigger ("hit");
-		animator.SetBool ("muerto",false);
+		//animator.SetBool ("muerto",false);
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

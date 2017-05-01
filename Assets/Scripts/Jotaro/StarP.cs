@@ -5,6 +5,7 @@ using UnityEngine;
 public class StarP : MonoBehaviour {
 
 
+
 	[SerializeField]
 	private float speed;
 
@@ -53,15 +54,23 @@ public class StarP : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	void OnCollisionEnter2D (Collision2D col) 
+	void OnTriggerEnter2D (Collider2D other) 
 	{
 		//Check collision name
 		//Debug.Log("collision name = " + col.gameObject.name);
-		if(col.gameObject.name == "JotaroKujoStand_0")
-		{
+		//if(other.gameObject.layer == "Enemy"){
+
+			//Physics2D.IgnoreCollision (col2D, other.GetComponent<Collider2D> ());
+		//}
+
+		if (other.tag != "sight") {
 			
-			Physics2D.IgnoreCollision (col2D,col.collider);
-			 
+			Physics2D.IgnoreCollision (col2D, other.GetComponent<Collider2D> ());
+			Destroy (gameObject);
+		} else {
+			
+			Destroy (gameObject);
+
 		}
 
 	}

@@ -24,8 +24,8 @@ public class DonPatchArmy : MonoBehaviour {
 		{
 			
 			Destroy(col.gameObject);
-			ani.SetTrigger ("hit");
-			ani.SetBool ("muerto", true);
+
+
 
 
 

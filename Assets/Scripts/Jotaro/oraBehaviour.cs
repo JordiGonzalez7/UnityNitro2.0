@@ -24,9 +24,15 @@ public class oraBehaviour : StateMachineBehaviour {
 
 	// OnStateExit is called before OnStateExit is called on any state inside this state machine
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		Controller.Instance.ora = false;
+		//Controller.Instance.ora = false;
+
+		animator.GetComponent<Character> ().ora = false;
+		animator.GetComponent<Character> ().SwordCollider.enabled = false;
+
+
 		animator.ResetTrigger ("Ora");
 		animator.ResetTrigger ("lanzar");
+
 
 	}
 
