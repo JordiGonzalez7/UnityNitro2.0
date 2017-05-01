@@ -12,7 +12,12 @@ public class IdleState : iEnemyState {
 
 	public void Execute ()
 	{
+
 		Idle ();
+		if (enemy.Target != null) {
+			enemy.ChangeState (new PatrolState ());
+		
+		}
 	}
 
 	public void Enter (PatchScript enemy)

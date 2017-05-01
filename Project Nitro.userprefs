@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Jotaro\Character.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Jotaro\Controller.cs">
     <Files>
-      <File FileName="Assets\Scripts\Enemy\PatchScript.cs" Line="49" Column="1" />
-      <File FileName="Assets\Scripts\Jotaro\Character.cs" Line="10" Column="25" />
-      <File FileName="Assets\Scripts\Enemy\ignoreCollision.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Jotaro\Controller.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy\States\PatrolState.cs" Line="8" Column="36" />
+      <File FileName="Assets\Scripts\Jotaro\Controller.cs" Line="308" Column="14" />
+      <File FileName="Assets\Scripts\Enemy\PatchScript.cs" Line="109" Column="32" />
+      <File FileName="Assets\Scripts\Jotaro\Character.cs" Line="1" Column="1" />
+      <File FileName="Assets\DeadthBehaviour.cs" Line="20" Column="45" />
+      <File FileName="Assets\Scripts\AtaqueCollider.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

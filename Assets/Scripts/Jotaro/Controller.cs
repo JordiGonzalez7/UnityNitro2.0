@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : Character {
+
+public delegate void DeadEventHandle ();
+
+
+public class Controller : Character
+{
 
 
 
 
 	private static Controller instance;
 
-	public static Controller Instance
-	{
-		get 
-		{ 
+	public event DeadEventHandle Dead;
+
+	public static Controller Instance {
+		get { 
 
 			if (instance == null) {
 			
@@ -32,6 +37,12 @@ public class Controller : Character {
 
 	//private bool ora;
 
+	private SpriteRenderer spr;
+
+	private bool inmortal = false;
+
+	[SerializeField]
+	private float inmortalTime;
 
 	[SerializeField]
 	private Transform[] groundPoints;
@@ -44,79 +55,76 @@ public class Controller : Character {
 
 	//private bool isG;
 	//private bool jump;
-    [SerializeField]
-    private bool airControl;
+	[SerializeField]
+	private bool airControl;
 
 	[SerializeField]
 	private float jumpForce;
 
-
-
-
-	public Rigidbody2D myRB  { get; set;}
-
-
-
-	public bool Jump { get; set;}
-
-	public bool OnGround { get; set;}
+	private Vector3 startPos;
 
 
 
 
 
-	public override void  Start (){
+
+
+	public Rigidbody2D myRB  { get; set; }
+
+
+
+	public bool Jump { get; set; }
+
+	public bool OnGround { get; set; }
+
+
+
+
+
+	public override void  Start ()
+	{
 
 		base.Start ();
-		myRB = GetComponent<Rigidbody2D>();
+		startPos = transform.position;
+		myRB = GetComponent<Rigidbody2D> ();
+		spr = GetComponent<SpriteRenderer> ();
 		
 
 	}
 
-	void Update(){
-	
-		HandleInput ();
+	void Update ()
+	{
+
+		if (!TakingDamage && !IsDead) {
+			HandleInput ();
+		}
 	
 	}
 
 
 
-	void  FixedUpdate (){
+	void  FixedUpdate ()
+	{
 
-		float horizontal = Input.GetAxis("Horizontal");
+		if (!TakingDamage && !IsDead) {
+			float horizontal = Input.GetAxis ("Horizontal");
 
 
-		OnGround = IsGrounded();
-		HandleMovement(horizontal);
+			OnGround = IsGrounded ();
+			HandleMovement (horizontal);
 
-		flip (horizontal);
+			flip (horizontal);
 
-		//HandleOraOra ();
+			//HandleOraOra ();
 
-		HandleLayers ();
+			HandleLayers ();
 
-		//resetValues ();
+			//resetValues ();
+		}
 
 	}
 
-
-
-
-
-	//metodo movimiento
-
-
-	//
-
-	//
-	//On colision cuando entre en el tag pared activar nueva boleana pared
-	//
-
-	//
-
-
-
-	private void HandleMovement(float horizontal)
+	private void HandleMovement (float horizontal)
 	{
 		
 		if (myRB.velocity.y < 0) {
@@ -124,12 +132,12 @@ public class Controller : Character {
 
 		}
 
-		if (!this.ani.GetCurrentAnimatorStateInfo(0).IsTag("Ora") && (OnGround || airControl)) {
+		if (!this.ani.GetCurrentAnimatorStateInfo (0).IsTag ("Ora") && (OnGround || airControl)) {
 			myRB.velocity = new Vector2 (horizontal * speed, myRB.velocity.y);
 
 		}
 
-		if (Jump && myRB.velocity.y == 0){
+		if (Jump && myRB.velocity.y == 0) {
 
 			myRB.AddForce (new Vector2 (0, jumpForce));
 		}
@@ -137,42 +145,13 @@ public class Controller : Character {
 		ani.SetFloat ("speed", Mathf.Abs (horizontal));
 
 
-		/*
-		if (myRB.velocity.y < 0) {
-			ani.SetBool ("land", true);
-		}
 
-
-		if (!this.ani.GetCurrentAnimatorStateInfo(0).IsTag("Ora") && (IsGrounded() || airControl))
-			{
-
-			myRB.velocity = new Vector2 (horizontal * speed, myRB.velocity.y);
-
-
-			}
-
-		if (IsGrounded() && jump)
-
-		{
-			isG = false; 
-			myRB.AddForce(new Vector2 (0, jumpForce));
-			ani.SetTrigger ("jump");
-
-
-
-		}
-
-		ani.SetFloat("speed",Mathf.Abs(horizontal));
-
-
-
-
-			*/
 	}
      
 
 	//metodo pulsa botones
-	private void HandleInput(){
+	private void HandleInput ()
+	{
 
 
 		if (Input.GetKeyDown (KeyCode.LeftShift) && OnGround) {
@@ -190,17 +169,18 @@ public class Controller : Character {
 
 		if (Input.GetKeyDown (KeyCode.L) && OnGround) {
 		
-			ani.SetTrigger("lanzar");
-			Lanzar(0);
+			ani.SetTrigger ("lanzar");
+			Lanzar (0);
 		}
 
-	} 
+	}
 
 
 	//metodo ataque
-	private void HandleOraOra(){
+	private void HandleOraOra ()
+	{
 
-		if (ora && !this.ani.GetCurrentAnimatorStateInfo(0).IsTag("Ora") && OnGround) {
+		if (ora && !this.ani.GetCurrentAnimatorStateInfo (0).IsTag ("Ora") && OnGround) {
 			ani.SetTrigger ("Ora");
 			myRB.velocity = Vector2.zero;
 		}
@@ -209,35 +189,21 @@ public class Controller : Character {
 
 
 	//metodo para girar
-	private void flip(float horizontal){
+	private void flip (float horizontal)
+	{
 
-		if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight && (!this.ani.GetCurrentAnimatorStateInfo(0).IsTag("Ora"))) {
+		if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight && (!this.ani.GetCurrentAnimatorStateInfo (0).IsTag ("Ora"))) {
 
-			ChangeDirc();
-			/*
-			facingRight = !facingRight;
-			Vector3 SCALE = transform.localScale;
+			ChangeDirc ();
 
-			SCALE.x *= -1;
-
-			transform.localScale = SCALE;
-		*/
 
 
 		}
 	}
 
-	/*
-	private void resetValues()
-	{
-		ora = false;
-        jump = false;
 
 
-	}
-	*/
-
-	private bool IsGrounded()
+	private bool IsGrounded ()
 	{
 		if (myRB.velocity.y <= 0) {
 
@@ -245,10 +211,9 @@ public class Controller : Character {
 
 				Collider2D[] colliders = Physics2D.OverlapCircleAll (point.position, groundRadius, whatIsGround);
 				for (int i = 0; i < colliders.Length; i++) {
-					if(colliders[i].gameObject !=gameObject){
+					if (colliders [i].gameObject != gameObject) {
 
-						//ani.ResetTrigger("jump");
-						//ani.SetBool ("land", false);
+
 						return true;
 
 					}
@@ -261,18 +226,20 @@ public class Controller : Character {
 		return false;
 	}
 
-    private void HandleLayers() {
+	private void HandleLayers ()
+	{
 
 		if (!OnGround) {
 			ani.SetLayerWeight (1, 1);
 
 		} else {
-			ani.SetLayerWeight(1,0);
+			ani.SetLayerWeight (1, 0);
 		}
 
-    }
+	}
 
-	public override void Lanzar(int value){
+	public override void Lanzar (int value)
+	{
         
 
 
@@ -280,19 +247,79 @@ public class Controller : Character {
 			base.Lanzar (value);
 		}
 
-		/*
-        if (facingRight && OnGround) {
-			
-			GameObject tmp = (GameObject)Instantiate(starPre, transform.position, Quaternion.identity);
-			tmp.GetComponent<StarP> ().Initialize (Vector2.right);
 
-
-		} else if (!facingRight && OnGround) {
-			
-			GameObject tmp = (GameObject)Instantiate(starPre, transform.position, Quaternion.Euler(new Vector3(0,180,0)));
-			tmp.GetComponent<StarP> ().Initialize (Vector2.left);
-		}
-		*/
 	}
+
+	public override bool IsDead { 
+
+		get { 
+
+			if (health <= 0) {
+				OnDead ();
+			}
+			return health <= 0;
+		}
+
+
+	}
+
+	private IEnumerator IndicateInmortal ()
+	{
+	
+		while (inmortal) {
+		
+			spr.enabled = false;
+			yield return new WaitForSeconds (.1f);
+			spr.enabled = true;
+			yield return new WaitForSeconds (.1f);
+		}
+		
+	}
+
+	public override IEnumerator TakeDamege ()
+	{
+
+
+		if (!inmortal) {
+			health -= 10;
+
+			if (!IsDead) {
+			
+				ani.SetTrigger ("hit");
+				inmortal = true;
+				StartCoroutine (IndicateInmortal ());
+				yield return new WaitForSeconds (inmortalTime);
+
+				inmortal = false;
+
+			} else {
+				ani.SetLayerWeight (1, 0);
+				ani.SetTrigger ("muerto");
+
+			}
+		}
+	}
+
+	public override void Death(){
+
+
+		myRB.velocity = Vector2.zero;
+		ani.SetTrigger ("idle");
+		health = 30;
+		transform.position = startPos;
+
+	}
+
+
+	public void OnDead ()
+	{
+	
+		if (Dead != null) {
+
+			Dead();
+		}
+	
+	}
+
 
 }

@@ -6,15 +6,25 @@ public abstract class Character : MonoBehaviour {
 
 	private SpriteRenderer mySpriteRenderer;
 
-	private float oraStart = 0f;
-	private float oraCD = 1f;
 
+	private float oraCD = 2f;
+	private float timeStamp;
+
+	[SerializeField]
+	private List<string> damageSources;
 
 	public Animator ani { get; private set;}
 
 	[SerializeField]
+	private BoxCollider2D swordCollider;
+
+	[SerializeField]
 	protected float speed;
 
+	[SerializeField]
+	protected int health;
+
+	public abstract bool IsDead { get;}
 
 	protected bool facingRight;
 
@@ -22,10 +32,20 @@ public abstract class Character : MonoBehaviour {
 
 	public bool ora { get; set;}
 
+	public bool TakingDamage { get; set;}
+
 	// Use this for initialization
 
 	[SerializeField]
 	protected GameObject starPre;
+
+	public BoxCollider2D SwordCollider
+	{
+
+		get{ 
+			return swordCollider;
+		}
+	}
 
 	public virtual void Start () {
 
@@ -56,22 +76,49 @@ public abstract class Character : MonoBehaviour {
 
 	public virtual void Lanzar(int value)
 	{
-		oraCD -= Time.deltaTime;
-
-		if(Time.time > oraStart + oraCD){
-		if (facingRight) {
-
-			GameObject tmp = (GameObject)Instantiate(starPre, transform.position, Quaternion.identity);
-			tmp.GetComponent<StarP> ().Initialize (Vector2.right);
+		
 
 
+		if (timeStamp <= Time.time)
+		{
+			if (facingRight) {
 
-		} else {
+				GameObject tmp = (GameObject)Instantiate(starPre, new Vector2(transform.position.x+2,transform.position.y), Quaternion.identity);
+				tmp.GetComponent<StarP> ().Initialize (Vector2.right);
 
-			GameObject tmp = (GameObject)Instantiate(starPre, transform.position, Quaternion.Euler(new Vector3(0,180,0)));
-			tmp.GetComponent<StarP> ().Initialize (Vector2.left);
+
+
+			} else {
+
+				GameObject tmp = (GameObject)Instantiate(starPre, new Vector2(transform.position.x-2,transform.position.y), Quaternion.Euler(new Vector3(0,180,0)));
+				tmp.GetComponent<StarP> ().Initialize (Vector2.left);
 			}
-			oraStart = Time.time;
+			timeStamp = Time.time + oraCD;
+		}
+
+
+
+	}
+
+	public void AttackMelee(){
+
+		swordCollider.enabled = true;
+	}
+
+
+	public abstract IEnumerator TakeDamege ();
+
+	public abstract void Death ();
+
+	public virtual void OnTriggerEnter2D(Collider2D other){
+	
+		if (!IsDead) {
+
+			if (damageSources.Contains(other.tag)) {
+
+				StartCoroutine (TakeDamege ());
+
+			}
 		}
 	}
 }

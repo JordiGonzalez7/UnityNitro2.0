@@ -46,8 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DeadthBehaviour.cs" />
+     <Compile Include="Assets\Scripts\AtaqueCollider.cs" />
      <Compile Include="Assets\Scripts\Enemy\DonPatchArmy.cs" />
      <Compile Include="Assets\Scripts\Enemy\PatchScript.cs" />
+     <Compile Include="Assets\Scripts\Enemy\PatchSight.cs" />
      <Compile Include="Assets\Scripts\Enemy\States\IdleState.cs" />
      <Compile Include="Assets\Scripts\Enemy\States\MeleeState.cs" />
      <Compile Include="Assets\Scripts\Enemy\States\PatrolState.cs" />
@@ -63,6 +66,8 @@
      <Compile Include="Assets\Scripts\Jotaro\jumpBehaviour.cs" />
      <Compile Include="Assets\Scripts\Jotaro\oraBehaviour.cs" />
      <Compile Include="Assets\SineBehaviour.cs" />
+     <Compile Include="Assets\ThrowBehaviour.cs" />
+     <Compile Include="Assets\damageBehaviour.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

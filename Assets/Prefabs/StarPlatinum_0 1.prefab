@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 50447972712231980}
   - component: {fileID: 114171561147020372}
   - component: {fileID: 61579010920582900}
-  m_Layer: 0
+  - component: {fileID: 114066723990012434}
+  m_Layer: 8
   m_Name: StarPlatinum_0 1
-  m_TagString: Untagged
+  m_TagString: punch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,9 +76,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.2286339, y: 0.02539253}
+  m_Offset: {x: 0.2286339, y: 0.0837739}
   serializedVersion: 2
-  m_Size: {x: 0.2852325, y: 0.5579368}
+  m_Size: {x: 0.2852325, y: 0.1742875}
 --- !u!95 &95481652832157486
 Animator:
   serializedVersion: 3
@@ -95,6 +96,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114066723990012434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1974777904617618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513af8997e650634e9a4268031d6fd58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 61591706342905892, guid: ab4bfff9dd7f55b47b127cdc83c6daf1, type: 2}
+  other2: {fileID: 61205631325401188, guid: 50f93acf8e195e64f8af11a49b89745e, type: 2}
 --- !u!114 &114171561147020372
 MonoBehaviour:
   m_ObjectHideFlags: 1

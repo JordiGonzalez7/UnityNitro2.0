@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - pared
+  - edge
+  - punch
+  - enemi
+  - sight
+  - PlayerOra
+  - enemyOra
   layers:
   - Default
   - TransparentFX
@@ -15,7 +21,7 @@ TagManager:
   - 
   - 
   - Fondo
-  - 
+  - Enemy
   - 
   - 
   - 
