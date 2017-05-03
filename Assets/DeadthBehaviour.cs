@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class DeadthBehaviour : StateMachineBehaviour {
@@ -10,14 +11,25 @@ public class DeadthBehaviour : StateMachineBehaviour {
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		deathTimer = 0;
+
+
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		deathTimer += Time.deltaTime;
 
+		int i = animator.GetComponent<Controller> ().vidas;
+
 		if (deathTimer >= respawnTime) {
-			animator.GetComponent<Character> ().Death();
+
+			if (i < 0) {
+
+				SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+
+			} else {
+				animator.GetComponent<Character> ().Death ();
+			}
 		
 		}
 	}

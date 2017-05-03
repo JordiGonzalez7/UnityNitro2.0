@@ -103,6 +103,10 @@ public abstract class Character : MonoBehaviour {
 	public void AttackMelee(){
 
 		swordCollider.enabled = true;
+		Vector3 tmpPos = swordCollider.transform.position;
+		swordCollider.transform.position = new Vector3(swordCollider.transform.position.x + 0,01, swordCollider.transform.position.y);
+		swordCollider.transform.position = tmpPos;
+
 	}
 
 
@@ -113,10 +117,17 @@ public abstract class Character : MonoBehaviour {
 	public virtual void OnTriggerEnter2D(Collider2D other){
 	
 		if (!IsDead) {
-
+			
 			if (damageSources.Contains(other.tag)) {
-
+				
 				StartCoroutine (TakeDamege ());
+
+				if (other.tag == "punch") {
+				
+					Destroy (other.gameObject);
+				}
+
+
 
 			}
 		}

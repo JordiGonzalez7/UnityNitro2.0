@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 
@@ -36,6 +38,17 @@ public class Controller : Character
 
 
 	//private bool ora;
+
+	public Text healthTxt;
+
+	public Text contadorVidas;
+
+	[SerializeField]
+	public int vidas;
+
+	public Image DIE;
+
+	public Image End;
 
 	private SpriteRenderer spr;
 
@@ -88,6 +101,7 @@ public class Controller : Character
 		startPos = transform.position;
 		myRB = GetComponent<Rigidbody2D> ();
 		spr = GetComponent<SpriteRenderer> ();
+		SetText ();
 		
 
 	}
@@ -282,6 +296,7 @@ public class Controller : Character
 
 		if (!inmortal) {
 			health -= 10;
+			SetText ();
 
 			if (!IsDead) {
 			
@@ -300,15 +315,24 @@ public class Controller : Character
 		}
 	}
 
-	public override void Death(){
 
 
+	public override void Death ()
+	{
+		End.enabled = false;
+		DIE.enabled = false;
 		myRB.velocity = Vector2.zero;
 		ani.SetTrigger ("idle");
-		health = 30;
+		health = 100;
 		transform.position = startPos;
 
+		SetText ();
+
+
 	}
+
+
+
 
 
 	public void OnDead ()
@@ -316,10 +340,36 @@ public class Controller : Character
 	
 		if (Dead != null) {
 
-			Dead();
+			Dead ();
 		}
 	
 	}
+
+	void SetText ()
+	{
+	
+		healthTxt.text = "Health: " + health.ToString ();
+		contadorVidas.text = "Vidas: " + vidas.ToString ();
+		if (health <= 0) {
+			vidas = vidas - 1;
+			DIE.enabled = true;
+
+			if (vidas < 0) {
+
+				DIE.enabled = false;
+				End.enabled = true;
+
+			}
+			
+		
+		
+
+		
+		}
+	
+	}
+
+
 
 
 }

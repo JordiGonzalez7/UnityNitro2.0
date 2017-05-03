@@ -28,7 +28,7 @@ public class oraBehaviour : StateMachineBehaviour {
 
 		animator.GetComponent<Character> ().ora = false;
 		animator.GetComponent<Character> ().SwordCollider.enabled = false;
-
+		//animator.GetComponent<Character> ().AttackMelee();
 
 		animator.ResetTrigger ("Ora");
 		animator.ResetTrigger ("lanzar");

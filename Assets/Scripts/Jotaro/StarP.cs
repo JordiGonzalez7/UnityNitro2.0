@@ -13,7 +13,8 @@ public class StarP : MonoBehaviour {
 
 	protected Animator ani;
 
-	private Collider2D col2D;
+
+	//private Collider2D col2D;
 
 
 
@@ -24,7 +25,7 @@ public class StarP : MonoBehaviour {
 	void Start () {
 
 		myRB = GetComponent<Rigidbody2D> ();
-		col2D = GetComponent<Collider2D> ();
+		//col2D = GetComponent<Collider2D> ();
 		ani = GetComponent<Animator>();
 		//direction = Vector2.right;
 
@@ -54,24 +55,19 @@ public class StarP : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	void OnTriggerEnter2D (Collider2D other) 
+
+	void OnCollisionEnter2D (Collision2D other) 
 	{
-		//Check collision name
-		//Debug.Log("collision name = " + col.gameObject.name);
-		//if(other.gameObject.layer == "Enemy"){
+		
 
-			//Physics2D.IgnoreCollision (col2D, other.GetComponent<Collider2D> ());
-		//}
-
-		if (other.tag != "sight") {
-			
-			Physics2D.IgnoreCollision (col2D, other.GetComponent<Collider2D> ());
-			Destroy (gameObject);
-		} else {
-			
+		
 			Destroy (gameObject);
 
-		}
+
+
+
+
 
 	}
+
 }
