@@ -8,7 +8,7 @@ public class MeleeState : iEnemyState
 	private PatchScript enemy;
 
 	private float attackTimer;
-	private float attackCooldown = 2;
+	private float attackCooldown = 4;
 	private bool canAttack = true;
 
 
@@ -21,7 +21,7 @@ public class MeleeState : iEnemyState
 		} else if (enemy.Target == null) {
 		
 			enemy.ChangeState (new IdleState ());
-		}
+		} 
 	}
 
 	public void Enter (PatchScript enemy)
@@ -34,7 +34,7 @@ public class MeleeState : iEnemyState
 		
 	}
 
-	public void OnTriggerEnter (Collider2D other)
+	public void OnTriggerEnter2D (Collider2D other)
 	{
 		
 	}

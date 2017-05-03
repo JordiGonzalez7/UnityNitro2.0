@@ -34,7 +34,7 @@ public class PatrolState : iEnemyState {
 		
 	}
 
-	public void OnTriggerEnter(Collider2D other)
+	public void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag.Equals("edge")) {
 		

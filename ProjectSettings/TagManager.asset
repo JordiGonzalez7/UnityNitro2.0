@@ -11,6 +11,7 @@ TagManager:
   - sight
   - PlayerOra
   - enemyOra
+  - escenario
   layers:
   - Default
   - TransparentFX

@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\Enemy\ignoreCollision.cs" />
      <Compile Include="Assets\Scripts\Escenario\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Escenario\DIOWALL.cs" />
+     <Compile Include="Assets\Scripts\Escenario\Obstaculos\ObstaCaida.cs" />
+     <Compile Include="Assets\Scripts\Escenario\Obstaculos\Spawner.cs" />
      <Compile Include="Assets\Scripts\Jotaro\Character.cs" />
      <Compile Include="Assets\Scripts\Jotaro\Controller.cs" />
      <Compile Include="Assets\Scripts\Jotaro\LandBehaviour.cs" />

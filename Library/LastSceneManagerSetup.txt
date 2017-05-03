@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ScenaFight.unity
+- path: Assets/ScenaConTodo.unity
   isLoaded: 1
   isActive: 1

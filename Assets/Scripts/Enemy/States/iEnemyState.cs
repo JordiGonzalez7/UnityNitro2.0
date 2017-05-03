@@ -8,7 +8,7 @@ public interface iEnemyState{
 	void Execute();
 	void Enter(PatchScript enemy);
 	void Exit();
-	void OnTriggerEnter(Collider2D other);
+	void OnTriggerEnter2D(Collider2D other);
 
 
 

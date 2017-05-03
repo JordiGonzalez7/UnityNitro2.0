@@ -10,7 +10,8 @@ public class AtaqueCollider : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 	
 		if (other.tag == target) {
-		
+
+
 			GetComponent<Collider2D> ().enabled = false; 
 		}
 	

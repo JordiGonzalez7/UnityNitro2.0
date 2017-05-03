@@ -74,7 +74,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0.2286339, y: 0.0837739}
   serializedVersion: 2
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513af8997e650634e9a4268031d6fd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  other: {fileID: 61591706342905892, guid: ab4bfff9dd7f55b47b127cdc83c6daf1, type: 2}
+  other: {fileID: 61575133707293580, guid: ab4bfff9dd7f55b47b127cdc83c6daf1, type: 2}
   other2: {fileID: 61205631325401188, guid: 50f93acf8e195e64f8af11a49b89745e, type: 2}
 --- !u!114 &114171561147020372
 MonoBehaviour:

@@ -103,7 +103,7 @@ public class PatchScript : Character
 
 	public override void OnTriggerEnter2D (Collider2D other){
 		base.OnTriggerEnter2D (other);
-		currentState.OnTriggerEnter (other);
+		currentState.OnTriggerEnter2D (other);
 	}
 
 	public override bool IsDead { 
